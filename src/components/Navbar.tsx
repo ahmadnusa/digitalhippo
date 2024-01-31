@@ -2,6 +2,7 @@ import { cookies } from "next/headers"
 import Link from "next/link"
 import React from "react"
 
+import Cart from "./Cart"
 import { Icons } from "./Icons"
 import MaxWidthWrapper from "./MaxWidthWrapper"
 import MobileNav from "./MobileNav"
@@ -67,10 +68,9 @@ const Navbar = () => {
                       />{" "}
                     </>
                   )} */}
-
-                  <div className="ml-4 flow-root lg:ml-6">
-                    Cart{/* <Cart /> */}
-                  </div>
+                </div>
+                <div className="ml-4 flow-root lg:ml-6">
+                  <Cart />
                 </div>
               </div>
             </div>
