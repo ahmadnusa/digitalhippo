@@ -2,16 +2,19 @@ import { cookies } from "next/headers"
 import Link from "next/link"
 import React from "react"
 
+import { getServerSideUser } from "@/lib/payload-utils"
+
 import Cart from "./Cart"
 import { Icons } from "./Icons"
 import MaxWidthWrapper from "./MaxWidthWrapper"
 import MobileNav from "./MobileNav"
 import Navitems from "./Navitems"
 import { buttonVariants } from "./ui/button"
+import UserAccountNav from "./UserAccountNav"
 
-const Navbar = () => {
+const Navbar = async () => {
   const nextCoocies = cookies()
-  const user = false
+  const { user } = await getServerSideUser(nextCoocies)
   return (
     <div className="bg-white sticky z-50 top-0 inset-x-0 h-16">
       <header className="relative bg-white">
@@ -59,7 +62,7 @@ const Navbar = () => {
                     </>
                   )}
 
-                  {/* {user && (
+                  {user && (
                     <>
                       <UserAccountNav user={user} />
                       <span
@@ -67,7 +70,7 @@ const Navbar = () => {
                         aria-hidden="true"
                       />{" "}
                     </>
-                  )} */}
+                  )}
                 </div>
                 <div className="ml-4 flow-root lg:ml-6">
                   <Cart />

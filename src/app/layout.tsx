@@ -1,9 +1,8 @@
-// import Providers from '@/components/Providers'
-// import { Toaster } from 'sonner'
 import "./globals.css"
 
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { Toaster } from "sonner"
 
 import Navbar from "@/components/Navbar"
 import Providers from "@/components/Providers"
@@ -30,7 +29,7 @@ export default function RootLayout({
           </Providers>
         </main>
 
-        {/* <Toaster position='top-center' richColors /> */}
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   )
