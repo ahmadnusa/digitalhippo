@@ -26,36 +26,36 @@ export const Users: CollectionConfig = {
     },
   },
   access: {
-    read: () => true, //adminAndUser,
+    read: adminAndUser,
     create: () => true,
-    //   update: ({ req }) => req.user.role === "admin",
-    //   delete: ({ req }) => req.user.role === "admin",
+    update: ({ req }) => req.user.role === "admin",
+    delete: ({ req }) => req.user.role === "admin",
   },
-  // admin: {
-  //   hidden: ({ user }) => user.role !== "admin",
-  //   defaultColumns: ["id"],
-  // },
+  admin: {
+    hidden: ({ user }) => user.role !== "admin",
+    defaultColumns: ["id"],
+  },
   fields: [
-    // {
-    //   name: "products",
-    //   label: "Products",
-    //   admin: {
-    //     condition: () => false,
-    //   },
-    //   type: "relationship",
-    //   relationTo: "products",
-    //   hasMany: true,
-    // },
-    // {
-    //   name: "product_files",
-    //   label: "Product Files",
-    //   admin: {
-    //     condition: () => false,
-    //   },
-    //   type: "relationship",
-    //   relationTo: "product_files",
-    //   hasMany: true,
-    // },
+    {
+      name: "products",
+      label: "Products",
+      admin: {
+        condition: () => false,
+      },
+      type: "relationship",
+      relationTo: "products",
+      hasMany: true,
+    },
+    {
+      name: "product_files",
+      label: "Product Files",
+      admin: {
+        condition: () => false,
+      },
+      type: "relationship",
+      relationTo: "product_files",
+      hasMany: true,
+    },
     {
       name: "role",
       defaultValue: "user",
