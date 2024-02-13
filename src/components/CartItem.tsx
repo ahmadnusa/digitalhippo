@@ -25,6 +25,7 @@ const CartItem = ({ product }: { product: Product }) => {
                 src={image.url}
                 alt={product.name}
                 fill
+                sizes="100%"
                 className="absolute object-cover"
               />
             ) : (
@@ -51,7 +52,7 @@ const CartItem = ({ product }: { product: Product }) => {
                 onClick={() => removeItem(product.id)}
                 className="flex items-center gap-0.5"
               >
-                <X className="w-3 h-4" />
+                <X className="w-4 h-4 text-red-500 bold" />
                 Remove
               </button>
             </div>
