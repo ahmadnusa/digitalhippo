@@ -19,6 +19,11 @@ const Page = () => {
 
   const { mutate: createCheckoutSession, isLoading } =
     trpc.payment.createSession.useMutation({
+      onError: (err) => {
+        if (err.data?.code === "UNAUTHORIZED") {
+          router.push("/sign-in")
+        }
+      },
       onSuccess: ({ url }) => {
         if (url) router.push(url)
       },

@@ -74,28 +74,28 @@ export const paymentRouter = router({
         return { url: null }
       }
     }),
-  // pollOrderStatus: privateProcedure
-  //   .input(z.object({ orderId: z.string() }))
-  //   .query(async ({ input }) => {
-  //     const { orderId } = input
+  pollOrderStatus: privateProcedure
+    .input(z.object({ orderId: z.string() }))
+    .query(async ({ input }) => {
+      const { orderId } = input
 
-  //     const payload = await getPayloadClient()
+      const payload = await getPayloadClient()
 
-  //     const { docs: orders } = await payload.find({
-  //       collection: "orders",
-  //       where: {
-  //         id: {
-  //           equals: orderId,
-  //         },
-  //       },
-  //     })
+      const { docs: orders } = await payload.find({
+        collection: "orders",
+        where: {
+          id: {
+            equals: orderId,
+          },
+        },
+      })
 
-  //     if (!orders.length) {
-  //       throw new TRPCError({ code: "NOT_FOUND" })
-  //     }
+      if (!orders.length) {
+        throw new TRPCError({ code: "NOT_FOUND" })
+      }
 
-  //     const [order] = orders
+      const [order] = orders
 
-  //     return { isPaid: order._isPaid }
-  //   }),
+      return { isPaid: order._isPaid }
+    }),
 })
