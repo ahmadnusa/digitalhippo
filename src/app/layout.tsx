@@ -4,14 +4,14 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Toaster } from "sonner"
 
+import Footer from "@/components/Footer"
 import Navbar from "@/components/Navbar"
 import Providers from "@/components/Providers"
-import { cn } from "@/lib/utils"
-// import Footer from '@/components/Footer'
+import { cn, constructMetadata } from "@/lib/utils"
 
 const inter = Inter({ subsets: ["latin"] })
 
-// export const metadata = constructMetadata()
+export const metadata = constructMetadata()
 
 export default function RootLayout({
   children,
@@ -25,7 +25,7 @@ export default function RootLayout({
           <Providers>
             <Navbar />
             <div className="flex-grow flex-1">{children}</div>
-            {/* <Footer /> */}
+            <Footer />
           </Providers>
         </main>
 
